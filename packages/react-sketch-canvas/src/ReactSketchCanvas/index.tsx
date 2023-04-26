@@ -240,6 +240,11 @@ export const ReactSketchCanvas = React.forwardRef<
     };
 
     setCurrentPaths((paths) => [...paths.slice(0, -1), updatedStroke]);
+    React.useEffect(() => {
+      liftStrokeUp();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    } , [isDrawing, currentPaths]);
+
   };
 
   return (
