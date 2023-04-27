@@ -13,7 +13,7 @@ export interface ReactSketchCanvasProps
   eraserWidth?: number;
   onChange?: (updatedPaths: CanvasPath[]) => void;
   onStroke?: (path: CanvasPath, isEraser: boolean) => void;
-  onPointerUp?: () => void;
+  onDrawEnd?: () => void;
   strokeColor?: string;
   strokeWidth?: number;
   withTimestamp?: boolean;
@@ -56,7 +56,7 @@ export const ReactSketchCanvas = React.forwardRef<
     svgStyle = {},
     onChange = (_paths: CanvasPath[]): void => undefined,
     onStroke = (_path: CanvasPath, _isEraser: boolean): void => undefined,
-    onPointerUp = (): void => undefined,
+    onDrawEnd= (): void => undefined,
     withTimestamp = false,
     withViewBox = false,
   } = props;
@@ -242,7 +242,7 @@ export const ReactSketchCanvas = React.forwardRef<
     };
 
     setCurrentPaths((paths) => [...paths.slice(0, -1), updatedStroke]);
-    onPointerUp();
+    onDrawEnd();
   };
 
   return (
