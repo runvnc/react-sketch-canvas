@@ -242,6 +242,7 @@ export const ReactSketchCanvas = React.forwardRef<
     };
 
     setCurrentPaths((paths) => [...paths.slice(0, -1), updatedStroke]);
+    
     onDrawEnd();
   };
 
